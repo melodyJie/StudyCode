@@ -29,15 +29,17 @@ li{
 	height:100%;
 }
 #left_top{
-	height:20%;
+	height:30%;
 	background-color:#4D4D4D;
 
 	position:relative;
 }
 #left_top_name{
 	color:white;
-	text-align:center;
-	padding-top:20px;
+	position:absolute;
+	bottom:100px;
+	left:50%;
+	transform:translateX(-50%);
 }
 #head_img{
 	width:130px;
