@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>json简介</title>
+</head>
+<script type="text/javascript">
+	var json = {"a":10,"b":11}; //json对象的初始化. a 为名字  10 为值  ,名字和值成对出现
+	
+	alert(json.a);
+	alert(json.b);
+
+	alert('名称:');
+	for(var name in json){ //使用 for-in遍历json对象
+		alert(name); //显示json对象内的名字
+		
+	}
+	alert('值:');
+	for(var name in json){ //使用 for-in遍历json对象
+		
+		alert(json[name]);  //显示   值
+	}
+	
+</script>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>同时运动的动画效果</title>
+</head>
+<style type="text/css">
+	li {list-style-type:none;}
+	#li1{
+		width:100px;
+		height:100px;
+		background: yellow;
+		border:1px solid blur;
+		  /*这个必须放在 opacity:0.3 的前面*/
+		opacity:0.3;
+		filter:alpha(opacity:30);
+	}
+</style>
+<script src="../jsMode/move.js"></script>
+<script type="text/javascript">
+	window.onload=function(){
+		var oli = document.getElementById('li1');
+		oli.onmouseover=function(){
+			startMove(this,{'width':200,'height':200,'opacity':100});
+		}
+		oli.onmouseout=function(){
+			startMove(this,{'width':100,'height':100,'opacity':30});
+		}
+	}
+</script>
+<body>
+<li id = 'li1'></li>
+</body>
+</html>

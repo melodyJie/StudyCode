@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>链式运动</title>
+</head>
+<style type="text/css">
+	li {list-style-type:none;}
+	#li1{
+		width:100px;
+		height:100px;
+		background: yellow;
+		border:1px solid blur;
+		filter:alpha(opacity:30);
+		opacity:0.3;
+	}
+</style>
+<script src="../jsMode/move.js"></script>
+<script type="text/javascript">
+	window.onload=function(){
+		var oli = document.getElementById('li1');
+		oli.onmouseover=function(){
+			startMove(oli,{'width':200},function(){
+				startMove(oli,{'height':200},function(){
+					startMove(oli,{'opacity':100});
+				});
+			});
+		}
+		oli.onmouseout=function(){
+			startMove(oli,{'opacity':30},function(){
+				startMove(oli,{'height':100},function(){
+					startMove(oli,{'width':100});
+				});
+			});
+		}
+	}
+</script>
+<body>
+<li id = 'li1'></li>
+</body>
+</html>

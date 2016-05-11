@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>globalCompositeOperation</title>
+	<style>
+		#canvas{
+			border:1px solid grey;
+		}
+	</style>
+	<script type="text/javascript">
+		var Width;
+		window.onload=function(){
+			var canvas=document.getElementById('canvas');
+			canvas.width=document.body.clientWidth||document.documentElement.clientWidth;
+			canvas.height=500;
+			//Width=canvas.width;
+			var context=canvas.getContext('2d');
+
+			drawType("source-over",context);
+			var btn=document.getElementsByTagName('a');
+			for(var i=0;i<btn.length;i++){
+				btn[i].onclick=function(){
+					drawType(this.innerHTML,context);
+				}
+			}
+			
+		}
+		function drawType(type,cxt){
+			//canvas=cxt.canvas;
+			console.log(canvas.width);
+			cxt.clearRect(0,0,canvas.width,canvas.height);
+			//保存状态
+			cxt.save();
+
+			cxt.font ="bold 40px Arial";
+			cxt.textAlign="center";
+			cxt.textBaseline="middle";
+			cxt.fillText("globalCompositeOperation:"+type,canvas.width/2,60);
+			//cxt.globalCompositeOperation=type;  //不能在这里设置状态!!!!!!!!!!!!!!!
+			//画矩形
+			
+
+			cxt.fillStyle="blue";
+			cxt.fillRect(100,100,250,250);
+			//画完第一个之后再设置状态
+			cxt.globalCompositeOperation=type;
+			//画三角形
+			cxt.fillStyle="red";
+			cxt.fillRect(200,200,250,250);
+			//回到之前的状态
+			cxt.restore();
+		}
+	</script>
+</head>
+<body>
+	<canvas id="canvas">
+		你的浏览器不支持...
+	</canvas>	
+	<div id="button">
+		<a href="#">source-over</a>
+		<a href="#">source-atop</a>
+		<a href="#">source-in</a>
+		<a href="#">source-out</a>
+		<a href="#">destination-over</a>
+		<a href="#">destination-atop</a>
+		<a href="#">destination-in</a>
+		<a href="#">destination-out</a>
+		<a href="#">lighter</a>
+		<a href="#">copy</a>
+		<a href="#">xor</a>
+	</div>
+
+</body>
+</html>

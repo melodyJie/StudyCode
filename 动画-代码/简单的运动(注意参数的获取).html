@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style type="text/css">
+    *{
+        padding: 0;
+        margin:0;
+    }
+    #div1{
+        width:200px;
+        height: 300px;
+        background: red;
+        position: absolute;
+        left:-200px;
+        top:0;
+    }
+    #div2{
+        width:30px;
+        height:50px;
+        background: blue;
+        position: absolute;
+        left:200px;
+        top:125px;
+    }
+    #div2 p{
+        font-size: 18px;
+        width: 18px;
+        line-height: 20px;
+        padding:5px 6px;
+    }
+    </style>
+   <script type="text/javascript">
+    window.onload=function(){
+        var odiv = document.getElementById('div1');
+        odiv.onmouseover=function(){
+            startMove(0);
+        }
+        odiv.onmouseout=function(){
+            startMove(-200);
+        }
+    }
+    var timer = null;
+    function startMove(itarget){
+        clearInterval(timer);
+        var odiv = document.getElementById('div1');
+        timer = setInterval(function(){
+            var spend = (itarget-odiv.offsetLeft)/20;
+            spend = spend>0?Math.ceil(spend):Math.floor(spend);
+            if(odiv.offsetLeft==itarget){
+                clearInterval(timer);
+            }
+            else{
+                odiv.style.left=odiv.offsetLeft+spend+'px';//这里不能用 odiv.style.left+spend;  因为odiv.style.
+                                                           //left返回的是字符串! -200px;
+            }
+        },30);
+
+    }
+   </script>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2"><p>分享</p></div>
+    </div>
+</body>
+</html>
