@@ -57,7 +57,7 @@ li{
 	min-height:70%;
 }
 #left_bottom_list{
-	width:150px;
+	width:130px;
 	padding-top:90px;
 	margin:0 auto;
 }
@@ -66,9 +66,15 @@ li{
 	height:30px;
 	line-height:30px;
 	text-align:center;
+	margin-top:10px;
+	cursor:pointer;
+	
 }
 #left_bottom_list li:hover{
-	font-weight:bold;
+	font-size:30px;
+	color:grey;
+	box-shadow:0 0 10px grey;
+	border-radius:5px;
 }
 
 
@@ -78,7 +84,6 @@ li{
 	width:74%;
 	height:100%;
 	overflow:auto;
-
 }
 #main_right>div{
 	margin:20px 2% 0 2%;
