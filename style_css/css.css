@@ -73,8 +73,6 @@ li{
 #left_bottom_list li:hover{
 	font-size:30px;
 	color:grey;
-	box-shadow:0 0 10px grey;
-	border-radius:5px;
 }
 
 
@@ -111,5 +109,6 @@ li{
 	color:grey;
 }
 #main_right>div li a:hover{
-	color:red;
+	font-size:21px;
+	color:black;
 }
