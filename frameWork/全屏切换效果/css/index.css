@@ -1,0 +1,86 @@
+*{
+	padding:0;
+	margin:0;
+}
+ul{
+	list-style-type:none;
+}
+a{
+	text-decoration:none;
+}
+
+html,body{
+	height:100%;
+	width:100%;
+	overflow:hidden;
+}
+/**/
+.section{
+	width:100%;
+}
+.sections,.section,#container{
+	height:100%;
+	width:100%;
+}
+#section0{
+	background-image:url('../img/bg1.jpg');
+	background-size:cover;
+}
+#section1{
+	background-image:url('../img/bg2.jpg');
+	background-size:cover;
+}
+#section2{
+	background-image:url('../img/bg3.jpg');
+	background-size:cover;
+}
+#section3{
+	background-image:url('../img/bg4.jpg');
+	background-size:cover;
+}
+.section h1{
+	text-align:center;
+}
+
+/*分页按钮*/
+.pages{
+	position:fixed;
+}
+.vertical{
+	top:50%;
+	right:20px;
+	transform:translateY(-50%);
+}
+.horizontal{
+	left:50%;
+	bottom:20px;
+	transform:translateX(-50%);
+}
+.horizontal li{
+	float:left;
+}
+.pages li{
+	position:relative;
+	width:20px;
+	height:20px;
+	cursor:pointer;
+}
+.pages li p{
+	position:absolute;
+	height: 10px;
+	width:10px;
+	top:50%;
+	left: 50%;
+    transform: translate(-50%,-50%);
+	border-radius:50%;
+	background-color:white;
+}
+.pages .active p{
+	width:15px;
+	height:15px;
+	border-radius:50%;
+	border:2px solid yellow;
+	margin:1px;
+	background-color:rgba(0, 0, 0, 0);
+}
+

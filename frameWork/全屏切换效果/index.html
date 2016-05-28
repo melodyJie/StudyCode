@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>杨杰_全屏切换效果</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/JQFrameWork.js"></script>
+    <script>
+    $(function() {
+        $(".section h1").hide();
+        $(".section h1").eq(0).fadeIn(1000);
+        $("#container").PageSwitch({
+            /* 框架属性自定义设置
+			selectors: {
+            	sections: ".sections", //翻页也页面的容器
+            	section: ".section", //页面
+            	page: ".pages", //
+            	active: ".active" //页面加的行为类
+        	},
+        	index: 0, //从第几页开始翻页
+        	easing: "ease", //翻页的过渡效果
+        	duration: 500, //翻页的延时
+        	loop: true, //是否循环翻页
+        	pagination: true, //是否进行分页
+        	keyboard: true, //是否有键盘事件
+        	direction: "vertical", //horizontal:水平翻页  vertical:垂直翻页
+        	callback: "" //回调函数
+				
+			*/
+            direction: "herizontal",
+            callback: function() {
+                //测试回调函数  this 指向当前的section
+                $(".section h1").hide();
+                this.find("h1").fadeIn(1000);
+            }
+        });
+        //按默认属性来初始化框架
+        //$("#container").PageSwitch("init");
+    })
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div class="sections">
+            <div class="section" id="section0">
+                <h1>this is the page0</h1>
+            </div>
+            <div class="section" id="section1">
+                <h1>this is the page1</h1>
+            </div>
+            <div class="section" id="section2">
+                <h1>this is the page2</h1>
+            </div>
+            <div class="section" id="section3">
+                <h1>this is the page3</h1>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
