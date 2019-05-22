@@ -4,22 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="framework/js/phaser.min.js"></script>
+    <script defer src="framework/js/phaser.min.js"></script>
     
     <title>Document</title>
+    <style lang="css">
+        html,body,#testgame{
+            display: block;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            margin: 0 auto;
+        }
+        .logo {
+            position: absolute;
+            left: -1000px;
+            top: -1000px;
+        }
+        .share {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 2;
+        }
+        .share img {
+            position: absolute;
+        }
+        .share .sharepng {
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+        }
+        .game {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
+    <div class="logo">
+        <img src="http://game.webxinxin.com/plane/assets/logo.jpg" alt="" />
+    </div>
+    <div id="share" class="share">
+        <img class="sharepng" src="http://game.webxinxin.com/plane/assets/share.png" alt="" />
+        <img class="closebtn" src="http://game.webxinxin.com/plane/assets/close.png" alt="" onclick="onCloseShare();" />
+    </div>
     <div id='testgame'></div>
     <script src="js/boot.js"></script>
     <script src="js/preload.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/game.js"></script>
+    <script src="js/over.js"></script>
     <script>
+        var MainGame = null;
+        var makeTitle = function (score) {
+            if (score < 1000) {
+                return "简版飞机大战，还挺难的，我才" + score + "分，你能得多少分呢？";
+            } else {
+                return "简版飞机大战，我是天才，得了" + score + "分，你能得多少分呢？";
+            }
+        };
+        // 关闭分享
+        var onCloseShare = function () {
+            document.getElementById('share').style.display = 'none';
+        };
         window.onload = function () {
-            var game = new Phaser.Game(320,480,Phaser.CANVAS,'testgame');
-            game.state.add('boot',BasicGame.Boot);
-            game.state.add('preload',BasicGame.Preload);
-            game.state.add('game',BasicGame.Game);
-            game.state.start('boot');
+            MainGame = new Phaser.Game(240,400,Phaser.CANVAS,'testgame');
+            MainGame.state.add('boot',BasicGame.Boot);
+            MainGame.state.add('preload',BasicGame.Preload);
+            MainGame.state.add('menu', BasicGame.Menu);
+            MainGame.state.add('game',BasicGame.Game);
+            MainGame.state.add('over', BasicGame.Over);
+            MainGame.state.start('boot');
         }
     </script>
 </body>

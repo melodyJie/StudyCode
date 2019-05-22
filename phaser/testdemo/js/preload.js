@@ -14,11 +14,12 @@ BasicGame.Preload.prototype = {
         var preloadSprite = this.add.sprite((this.world.width-220)/2, this.world.height / 2, 'loading');
         this.load.setPreloadSprite(preloadSprite);
         this.load.image('background', 'assets/bg.jpg');
-        this.load.image('copyright', 'assets/copyright.png');
         this.load.spritesheet('myplane', 'assets/myplane.png', 40, 40, 4);
         this.load.spritesheet('startbutton', 'assets/startbutton.png', 100, 40, 2);
         this.load.spritesheet('replaybutton', 'assets/replaybutton.png', 80, 30, 2);
         this.load.spritesheet('sharebutton', 'assets/sharebutton.png', 80, 30, 2);
+        this.load.spritesheet('dearbutton', 'assets/startbutton.png', 100, 40, 2);
+        this.load.spritesheet('nodearbutton', 'assets/replaybutton.png', 80, 30, 2);
         this.load.image('mybullet', 'assets/mybullet.png');
         this.load.image('bullet', 'assets/bullet.png');
         this.load.image('enemy1', 'assets/enemy1.png');
@@ -29,24 +30,42 @@ BasicGame.Preload.prototype = {
         this.load.spritesheet('explode3', 'assets/explode3.png', 50, 50, 3);
         this.load.spritesheet('myexplode', 'assets/myexplode.png', 40, 40, 3);
         this.load.image('award', 'assets/award.png');
-        this.load.audio('normalback', 'assets/normalback.mp3');
-        this.load.audio('playback', 'assets/playback.mp3');
-        this.load.audio('fashe', 'assets/fashe.mp3');
+        this.load.image('tipbox', 'assets/tipBox.png');
+        this.load.image('nokissnoplay', 'assets/nokissnoplay2.png');
+        this.load.image('mykiss', 'assets/mykiss.png');
+
+        // this.load.audio('normalback', 'assets/normalback.mp3');
+        // this.load.audio('playback', 'assets/playback.mp3');
+        // this.load.audio('fashe', 'assets/fashe.mp3');
+        // this.load.audio('crash1', 'assets/crash1.mp3');
+        // this.load.audio('crash2', 'assets/crash2.mp3');
+        // this.load.audio('crash3', 'assets/crash3.mp3');
+        // this.load.audio('ao', 'assets/ao.mp3');
+        // this.load.audio('pi', 'assets/pi.mp3');
+        // this.load.audio('deng', 'assets/deng.mp3');
+
+        this.load.audio('normalback', 'assets/iamalive.mp3');
+        this.load.audio('playback', 'assets/iamalive.mp3');
+        this.load.audio('fashe', 'assets/fashe001.mp3');
         this.load.audio('crash1', 'assets/crash1.mp3');
         this.load.audio('crash2', 'assets/crash2.mp3');
         this.load.audio('crash3', 'assets/crash3.mp3');
         this.load.audio('ao', 'assets/ao.mp3');
         this.load.audio('pi', 'assets/pi.mp3');
         this.load.audio('deng', 'assets/deng.mp3');
+
+        this.load.spritesheet('kissarr', 'assets/kissarr.png', 87, 80, 3);
+        this.load.audio('myworldinloveriver','assets/myworldinloveriver.mp3');
+        this.load.audio('mykissaudio', 'assets/deng.mp3');
+        this.load.audio('nokissaudio', 'assets/deng.mp3');
+        this.load.audio('haha', 'assets/deng.mp3');
+
         this.load.start();
     },
     fileComplete: function (progress) {
         this.text.setText(+progress + '%');
     },
     loadComplete: function (){
-        this.text.setText('请稍等3秒。。。');
-        setTimeout(() => {
-            this.state.start('game');
-        }, 3000);
+        this.state.start('menu');
     },
 }
